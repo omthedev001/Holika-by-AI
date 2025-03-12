@@ -13,19 +13,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Ensure minimum viewport height */
+            min-height: 100vh;
             width: 100%;
         }
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
         #gameCanvas {
-            width: 100%; /* Responsive width */
-            max-width: 1200px; /* Maximum width to prevent excessive scaling */
-            height: 90vh; /* 90% of viewport height to fit within screen */
-            min-height: 600px; /* Minimum height to ensure visibility */
+            width: 100%;
+            max-width: 1200px;
+            height: 90vh;
+            min-height: 600px;
             position: relative;
             overflow: hidden;
             image-rendering: pixelated;
-            margin: 0 auto; /* Center the canvas */
+            margin: 0 auto;
         }
         #gamePlayArea {
             position: relative;
@@ -37,7 +37,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 40%; /* 40% of canvas height */
+            height: 40%;
             background: #000033;
             z-index: 0;
         }
@@ -46,37 +46,43 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 60%; /* 60% of canvas height */
+            height: 60%;
             background: linear-gradient(to bottom, #2e7d32, #4caf50);
             z-index: 1;
         }
         #treesLeft, #treesRight {
-            position: absolute;
-            top: 0;
-            width: 10.66vw; /* Responsive width (10.66vw ≈ 128px at 1200px) */
-            height: 14.22vh; /* Responsive height (14.22vh ≈ 128px at 900px) */
-            font-size: 8vw; /* Responsive font size (8vw ≈ 96px at 1200px) */
-            z-index: 2;
-        }
-        #treesLeft { left: 0; }
-        #treesRight { right: 0; }
+        position: absolute;
+        top: 20px;  /* Adjust this value based on your needs */
+        width: auto; 
+        height: auto;
+        font-size: 64px;  /* Fixed size instead of viewport units */
+        z-index: 2;
+        transform: translateY(-30%);  /* Center vertically relative to garden */
+    }
+    #treesLeft { 
+        left: 20px;
+    }
+    #treesRight { 
+        right: 20px;
+    }
         .material {
             position: absolute;
-            width: 5.33vw; /* Responsive width (5.33vw ≈ 64px at 1200px) */
-            height: 7.11vh; /* Responsive height (7.11vh ≈ 64px at 900px) */
-            font-size: 4vw; /* Responsive font size (4vw ≈ 48px at 1200px) */
-            text-align: center;
+            width: 100px;
+            height: 100px;
             cursor: pointer;
             transition: transform 0.2s, opacity 0.5s;
             z-index: 3;
             image-rendering: pixelated;
         }
-        .good { color: #ffd700; }
-        .bad { color: #ff4040; }
-        .material:hover { transform: scale(1.2); }
+        .material img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .material:hover { transform: scale(2); }
         .animation {
             position: absolute;
-            font-size: 2.67vw; /* Responsive (2.67vw ≈ 32px at 1200px) */
+            font-size: 32px;
             pointer-events: none;
             transition: all 0.8s;
             text-shadow: 2px 2px 0 #000;
@@ -84,7 +90,7 @@
         }
         #scoreContainer {
             position: absolute;
-            top: 2.22vh; /* Responsive (2.22vh ≈ 20px at 900px) */
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
             color: #fff;
@@ -93,11 +99,11 @@
             text-align: center;
         }
         #scoreDisplay {
-            font-size: 4vw; /* Responsive (4vw ≈ 48px at 1200px) */
+            font-size: 48px;
         }
         #targetDisplay {
-            font-size: 2.67vw; /* Responsive (2.67vw ≈ 32px at 1200px) */
-            margin-top: 1.11vh; /* Responsive (1.11vh ≈ 10px at 900px) */
+            font-size: 32px;
+            margin-top: 10px;
             color: #ffd700;
         }
         @keyframes scoreGlow {
@@ -110,18 +116,18 @@
         }
         #hud {
             position: absolute;
-            top: 2.22vh; /* Responsive */
-            left: 2.22vh; /* Responsive */
+            top: 20px;
+            left: 20px;
             color: #fff;
             text-shadow: 3px 3px 0 #000;
             z-index: 5;
         }
         #progressBar {
-            width: 25vw; /* Responsive (25vw ≈ 300px at 1200px) */
-            height: 2.22vh; /* Responsive (2.22vh ≈ 20px at 900px) */
+            width: 300px;
+            height: 20px;
             border: 3px solid #fff;
             background: #333;
-            margin-top: 1.11vh; /* Responsive */
+            margin-top: 10px;
         }
         #progressFill {
             height: 100%;
@@ -130,10 +136,10 @@
             transition: width 0.3s;
         }
         #timer {
-            font-size: 2.67vw; /* Responsive (2.67vw ≈ 32px at 1200px) */
+            font-size: 32px;
             position: absolute;
-            top: 2.22vh; /* Responsive */
-            right: 2.22vh; /* Responsive */
+            top: 20px;
+            right: 20px;
             color: #fff;
             text-shadow: 3px 3px 0 #000;
             z-index: 5;
@@ -151,14 +157,14 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            font-size: 2.67vw; /* Responsive */
+            font-size: 24px;
             z-index: 6;
         }
-        #introMessage, #endMessage { margin-bottom: 3.33vh; /* Responsive */ }
+        #introMessage, #endMessage { margin-bottom: 30px; }
         #startBtn, #replayBtn {
-            padding: 1.67vh 3.33vw; /* Responsive */
+            padding: 15px 30px;
             font-family: inherit;
-            font-size: 2.67vw; /* Responsive */
+            font-size: 24px;
             cursor: pointer;
             background: #ff6f61;
             border: 3px solid #fff;
@@ -177,32 +183,13 @@
             color: #fff;
             justify-content: center;
             align-items: center;
-            font-size: 3.33vw; /* Responsive */
+            font-size: 32px;
             z-index: 7;
         }
         .fade-out { animation: fadeOut 1s forwards; }
         @keyframes fadeOut {
             from { opacity: 1; }
             to { opacity: 0; }
-        }
-
-        /* Media Queries for Responsiveness */
-        @media (max-width: 1200px) {
-            #gameCanvas { max-width: 100%; }
-            .material { font-size: 3vw; }
-            #scoreDisplay { font-size: 3.5vw; }
-            #targetDisplay { font-size: 2.5vw; }
-            #timer { font-size: 2.5vw; }
-            #introScreen, #endScreen { font-size: 2.5vw; }
-            #startBtn, #replayBtn { font-size: 2.5vw; }
-        }
-        @media (max-width: 800px) {
-            .material { font-size: 2.5vw; }
-            #scoreDisplay { font-size: 3vw; }
-            #targetDisplay { font-size: 2vw; }
-            #timer { font-size: 2vw; }
-            #introScreen, #endScreen { font-size: 2vw; }
-            #startBtn, #replayBtn { font-size: 2vw; }
         }
     </style>
 </head>
@@ -227,34 +214,29 @@
             <div id="introMessage">
                 Welcome to Holika Gatherer!<br>
                 Gather materials for the bonfire<br>
-                before the night ends!<br>
+                before the they are required!<br>
                 (Press Start)
             </div>
-            <button id="startBtn">Start</button>
+            <button id="startBtn" disabled>Loading Assets...</button>
         </div>
         <div id="endScreen">
             <div id="endMessage"></div>
             <button id="replayBtn">Play Again</button>
         </div>
-        <div id="videoPlaceholder">Video Playing (Replace with <video> tag)</div>
+        <video id="videoPlaceholder" controls autoplay loop><source src="other/a14475af-7ee2-4a77-82b1-47824e86ae76_watermarked_video0ee4464805c8d48148ea421a637572aef.mp4" type="video/mp4"></video>
     </div>
 
     <script>
         const gameCanvas = document.getElementById('gameCanvas');
-        const gamePlayArea = document.getElementById('gamePlayArea');
         const gardenArea = document.getElementById('gardenArea');
         const nightSky = document.getElementById('nightSky');
-        const scoreContainer = document.getElementById('scoreContainer');
         const scoreDisplay = document.getElementById('scoreDisplay');
-        const targetDisplay = document.getElementById('targetDisplay');
         const progressFill = document.getElementById('progressFill');
         const timerText = document.getElementById('timer');
         const introScreen = document.getElementById('introScreen');
         const endScreen = document.getElementById('endScreen');
-        const endMessage = document.getElementById('endMessage');
-        const replayBtn = document.getElementById('replayBtn');
         const startBtn = document.getElementById('startBtn');
-        const videoPlaceholder = document.getElementById('videoPlaceholder');
+        const replayBtn = document.getElementById('replayBtn');
 
         let score = 0;
         const goal = 50;
@@ -262,23 +244,50 @@
         let gameActive = false;
         let materials = [];
 
-        const goodMaterials = [
-            { sprite: '🪵', type: 'wood', value: 5 },
-            { sprite: '💩', type: 'cowdung', value: 5 },
-            { sprite: '🍃', type: 'leaves', value: 5 }
-        ];
-        const badMaterials = [
-            { sprite: '🥤', type: 'plastic', value: -1 },
-            { sprite: '📜', type: 'wrapper', value: -1 }
-        ];
+        const assets = {
+            good: [
+                { image: 'good_items/1-removebg-preview.png', type: 'wood', value: 3 },
+                { image: 'good_items/2-removebg-preview.png', type: 'cowdung', value: 5 },
+                { image: 'good_items/3-removebg-preview.png', type: 'leaves', value: 1 }
+            ],
+            bad: [
+                { image: 'bad_items/4-removebg-preview.png', type: 'bottle', value: -2 },
+                { image: 'bad_items/5-removebg-preview.png', type: 'wrapper', value: -1 },
+                { image: 'bad_items/6-removebg-preview.png', type: 'tire', value: -3 }
+            ]
+        };
+
+        // Preload images
+        let loaded = 0;
+        const totalAssets = [...assets.good, ...assets.bad].length; // +1 for tree
+        function preloadImage(src) {
+            return new Promise(resolve => {
+                const img = new Image();
+                img.src = src;
+                img.onload = () => {
+                    loaded++;
+                    if(loaded === totalAssets) {
+                        startBtn.disabled = false;
+                        startBtn.textContent = 'Start';
+                    }
+                    resolve();
+                };
+            });
+        }
+
+        // Start preloading
+        Promise.all([
+            ...assets.good.map(item => preloadImage(item.image)),
+            ...assets.bad.map(item => preloadImage(item.image))
+        ]).catch(error => console.error('Error loading assets:', error));
 
         function createNightSky() {
             const starCount = 50;
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.style.position = 'absolute';
-                star.style.width = '5px';
-                star.style.height = '5px';
+                star.style.width = '4px';
+                star.style.height = '4px';
                 star.style.background = '#fff';
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
@@ -286,8 +295,8 @@
             }
             const moon = document.createElement('div');
             moon.style.position = 'absolute';
-            moon.style.width = '50px';
-            moon.style.height = '50px';
+            moon.style.width = '40px';
+            moon.style.height = '40px';
             moon.style.background = '#ffd700';
             moon.style.borderRadius = '50%';
             moon.style.left = '15%';
@@ -301,32 +310,27 @@
         function spawnMaterial() {
             if (!gameActive) return;
             const isGood = Math.random() < 0.6;
-            const materialList = isGood ? goodMaterials : badMaterials;
+            const materialList = isGood ? assets.good : assets.bad;
             const material = materialList[Math.floor(Math.random() * materialList.length)];
 
             const div = document.createElement('div');
-            div.className = `material ${isGood ? 'good' : 'bad'}`;
-            div.innerHTML = material.sprite;
+            div.className = 'material';
             
-            // Temporarily hide the element while positioning
+            const img = new Image();
+            img.src = material.image;
+            div.appendChild(img);
+
             div.style.visibility = 'hidden';
             gardenArea.appendChild(div);
 
-            // Get dimensions after element is in DOM
-            const materialWidth = div.offsetWidth;
-            const materialHeight = div.offsetHeight;
-            const gardenWidth = gardenArea.offsetWidth;
-            const gardenHeight = gardenArea.offsetHeight;
-
-            // Calculate valid position range
-            const maxLeft = gardenWidth - materialWidth;
-            const maxTop = gardenHeight - materialHeight;
+            const rect = div.getBoundingClientRect();
+            const gardenRect = gardenArea.getBoundingClientRect();
             
-            // Set random position within bounds
+            const maxLeft = gardenRect.width - rect.width;
+            const maxTop = gardenRect.height - rect.height;
+            
             div.style.left = Math.random() * maxLeft + 'px';
             div.style.top = Math.random() * maxTop + 'px';
-            
-            // Make visible after positioning
             div.style.visibility = 'visible';
 
             div.onclick = () => handleClick(div, isGood, material.value);
@@ -337,7 +341,6 @@
                 setTimeout(() => div.remove(), 500);
             }, 5000);
         }
-
 
         function handleClick(div, isGood, value) {
             if (!gameActive) return;
@@ -355,7 +358,7 @@
             anim.style.top = div.style.top;
             gardenArea.appendChild(anim);
             setTimeout(() => {
-                anim.style.top = (parseFloat(anim.style.top) - 30) + 'px';
+                anim.style.top = (parseFloat(anim.style.top) - 30 + 'px');
                 anim.style.opacity = '0';
             }, 10);
             setTimeout(() => anim.remove(), 800);
@@ -388,7 +391,7 @@
 
         function endGame(won) {
             gameActive = false;
-            gamePlayArea.classList.add('fade-out');
+            document.querySelector('#gamePlayArea').classList.add('fade-out');
             setTimeout(() => {
                 endScreen.style.display = 'flex';
                 if (won) {
@@ -401,20 +404,13 @@
                     bonfire.style.fontSize = '96px';
                     bonfire.innerHTML = '🔥';
                     gardenArea.appendChild(bonfire);
-                    const family = document.createElement('div');
-                    family.style.position = 'absolute';
-                    family.style.left = '500px';
-                    family.style.top = '300px';
-                    family.style.fontSize = '48px';
-                    family.innerHTML = '👨‍👩‍👧';
-                    gardenArea.appendChild(family);
                 } else {
                     endMessage.textContent = 'Game Over: Celebration Failed!';
                     endMessage.style.color = '#a9a9a9';
                 }
                 setTimeout(() => {
                     endScreen.style.display = 'none';
-                    videoPlaceholder.style.display = 'flex';
+                    document.getElementById('videoPlaceholder').style.display = 'flex';
                 }, 2000);
             }, 1000);
         }
